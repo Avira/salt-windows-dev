@@ -10,7 +10,7 @@
 #
 #   DESCRIPTION: Development Environment Installation for Windows
 #
-#          BUGS: https://github.com/saltstack/salt-windows-dev/issues
+#          BUGS: https://github.com/saltstack/salt-windows-bootstrap/issues
 #
 #     COPYRIGHT: (c) 2012-2015 by the SaltStack Team, see AUTHORS.rst for more
 #                details.
@@ -20,26 +20,24 @@
 #       CREATED: 03/15/2015
 #==============================================================================
 
-
 # Load parameters
 param(
     [bool]$Silent = $False
 )
 
-
 Clear-Host
-##Write-Output "================================================================="
-#Write-Output ""
-#Write-Output "               Development Environment Installation"
-#Write-Output ""
-#Write-Output "               - Installs All Salt Dependencies"
-#Write-Output "               - Detects 32/64 bit Architectures"
-#Write-Output ""
-#Write-Output "               To run silently add -Silent $True"
-#Write-Output "               eg: dev_env.ps1 -Silent `$True"
-#Write-Output ""
-#Write-Output "================================================================="
-#Write-Output ""
+Write-Output "================================================================="
+Write-Output ""
+Write-Output "               Development Environment Installation"
+Write-Output ""
+Write-Output "               - Installs All Salt Dependencies"
+Write-Output "               - Detects 32/64 bit Architectures"
+Write-Output ""
+Write-Output "               To run silently add -Silent $True"
+Write-Output "               eg: dev_env.ps1 -Silent `$True"
+Write-Output ""
+Write-Output "================================================================="
+Write-Output ""
 
 #==============================================================================
 # Declare Variables
@@ -52,7 +50,7 @@ $strSaltDir         = "C:\salt"
 $strWindowsRepo     = "http://docs.saltstack.com/downloads/windows-deps"
 # Salt32.zip and Salt64.zip reside in the same directory as this script
 # This would be for an offline installation
-$strWindowsRepo     = Convert-Path c:/vagrant/deps/.
+#$strWindowsRepo     = $strWindowsRepo = Convert-Path .
 $strPythonDir       = "C:\Python27"
 $strScriptsDir      = "$strPythonDir\Scripts"
 
@@ -79,14 +77,13 @@ $strNSIS        = "nsis-3.0b1-setup.exe"
 #------------------------------------------------------------------------------
 If ([System.IntPtr]::Size -ne 4) {
 
-    #Write-Output "Detected 64bit Architecture..."
+    Write-Output "Detected 64bit Architecture..."
 
     $strGitDir      = "C:\Program Files (x86)\Git"
     $strNSISDir     = "C:\Program Files (x86)\NSIS"
 
     $strArchiveFile = "Salt64.zip"
 
-    $strVcredist    = "64\vcredist_x64.exe"
     $strM2Crypto    = "64\M2Crypto-0.21.1.win-amd64-py2.7.exe"
     $strMarkupSafe  = "64\MarkupSafe-0.23-cp27-none-win_amd64.whl"
     $strMsgPack     = "64\msgpack_python-0.4.5-cp27-none-win_amd64.whl"
@@ -99,14 +96,13 @@ If ([System.IntPtr]::Size -ne 4) {
 
  } Else {
 
-    #Write-Output "Detected 32bit Architecture"
+    Write-Output "Detected 32bit Architecture"
 
     $strGitDir      = "C:\Program Files\Git"
     $strNSISDir     = "C:\Program Files\NSIS"
 
     $strArchiveFile = "Salt32.zip"
 
-    $strVcredist    = "32\vcredist_x86.exe"
     $strM2Crypto    = "32\M2Crypto-0.21.1.win32-py2.7.exe"
     $strMarkupSafe  = "32\MarkupSafe-0.23-cp27-none-win32.whl"
     $strMsgPack     = "32\msgpack_python-0.4.5-cp27-none-win32.whl"
@@ -201,7 +197,7 @@ Function Expand-ZipFile($zipfile, $destination) {
 #==============================================================================
 # Download Dependencies File
 #==============================================================================
-#Write-Output "Downloading $strArchiveFile . . ."
+Write-Output "Downloading $strArchiveFile . . ."
 $file = $strArchiveFile
 $url = "$strWindowsRepo\$file"
 $file = "$strDownloadDir\$file"
@@ -212,35 +208,35 @@ If (!(Test-Path $file)) {
 #==============================================================================
 # Unzip Dependencies File
 #==============================================================================
-#Write-Output "Unzipping $strArchiveFile . . ."
+Write-Output "Unzipping $strArchiveFile . . ."
 Expand-ZipFile $file $strDownloadDir
 
 #==============================================================================
 # Install Dependencies
 #==============================================================================
-#Write-Output "Installing Dependencies . . ."
+Write-Output "Installing Dependencies . . ."
 
 #------------------------------------------------------------------------------
 # Check for installation of Git
 #------------------------------------------------------------------------------
-#Write-Output " - Checking for Git installation . . ."
+Write-Output " - Checking for Git installation . . ."
 If ( Test-Path $strGitDir\bin\git.exe ) {
 
     # Found Git, do nothing
-    #Write-Output " - Git Found . . ."
+    Write-Output " - Git Found . . ."
 
 } Else {
 
     # Git not found, install
-    #Write-Output " - Git Not Found . . ."
-    #Write-Output " - Downloading $strGit . . ."
+    Write-Output " - Git Not Found . . ."
+    Write-Output " - Downloading $strGit . . ."
     $file = $strGit
     $url = "$strWindowsRepo\$file"
     $file = "$strDownloadDir\$file"
     DownloadFileWithProgress $url $file
 
     # Create the inf file to be passed to the Git executable
-    #Write-Output " - Creating inf . . ."
+    Write-Host " - Creating inf . . ."
     Set-Content -path $strDownloadDir\git.inf -value "[Setup]"
     Add-Content -path $strDownloadDir\git.inf -value "Lang=default"
     Add-Content -path $strDownloadDir\git.inf -value "Dir=$strGitDir"
@@ -254,7 +250,7 @@ If ( Test-Path $strGitDir\bin\git.exe ) {
     Add-Content -path $strDownloadDir\git.inf -value "CRLFOption=CRLFAlways"
 
     # Install Git
-    #Write-Output " - Installing $strGit . . ."
+    Write-Output " - Installing $strGit . . ."
     $file = "$strDownloadDir\$strGit"
     $p = Start-Process $file -ArgumentList "/SILENT /LOADINF=$strDownloadDir\git.inf" -Wait -NoNewWindow -PassThru
 
@@ -263,47 +259,40 @@ If ( Test-Path $strGitDir\bin\git.exe ) {
 #------------------------------------------------------------------------------
 # Check for installation of NSIS
 #------------------------------------------------------------------------------
-#Write-Output " - Checking for NSIS installation . . ."
+Write-Output " - Checking for NSIS installation . . ."
 If ( Test-Path $strNSISDir\NSIS.exe ) {
 
     # Found NSIS, do nothing
-    #Write-Output " - NSIS Found . . ."
+    Write-Output " - NSIS Found . . ."
 
 } Else {
 
     # NSIS not found, install
-    #Write-Output " - NSIS Not Found . . ."
-    #Write-Output " - Downloading $strNSIS . . ."
+    Write-Output " - NSIS Not Found . . ."
+    Write-Output " - Downloading $strNSIS . . ."
     $file = $strNSIS
     $url = "$strWindowsRepo\$file"
     $file = "$strDownloadDir\$file"
     DownloadFileWithProgress $url $file
 
     # Install NSIS
-    #Write-Output " - Installing $strNSIS . . ."
+    Write-Output " - Installing $strNSIS . . ."
     $file = "$strDownloadDir\$strNSIS"
     $p = Start-Process $file -ArgumentList '/S' -Wait -NoNewWindow -PassThru
 
 }
 
 #------------------------------------------------------------------------------
-# Install Visual C++ Runtime
-#------------------------------------------------------------------------------
-#Write-Output " - Installing $file . . ."
-$file = "$strDownloadDir\$strVcredist"
-$p = Start-Process $file -ArgumentList "/q" -Wait -NoNewWindow -PassThru
-
-#------------------------------------------------------------------------------
 # Install Python
 #------------------------------------------------------------------------------
-#Write-Output " - Installing $strPython . . ."
+Write-Output " - Installing $strPython . . ."
 $file = "$strDownloadDir\$strPython"
 $p = Start-Process msiexec -ArgumentList "/i $file /qb ADDLOCAL=DefaultFeature,Extensions,PrependPath TARGETDIR=$strPythonDir" -Wait -NoNewWindow -PassThru
 
 #------------------------------------------------------------------------------
 # Update Environment Variables
 #------------------------------------------------------------------------------
-#Write-Output " - Updating Environment Variables . . ."
+Write-Output " - Updating Environment Variables . . ."
 $Path=(Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PATH).Path
 If (!($Path.ToLower().Contains("$strPythonDir\Scripts".ToLower()))) {
     $newPath="$strPythonDir\Scripts;$Path"
@@ -313,9 +302,9 @@ If (!($Path.ToLower().Contains("$strPythonDir\Scripts".ToLower()))) {
 #------------------------------------------------------------------------------
 # pip (easy_install included in pip install file)
 #------------------------------------------------------------------------------
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strPip . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strPip . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strPip"
 $p = Start-Process "$strPythonDir\python" -ArgumentList "$file --no-index --find-links=$strDownloadDir" -Wait -NoNewWindow -PassThru
 
@@ -326,27 +315,27 @@ $p = Start-Process "$strPythonDir\python" -ArgumentList "$file --no-index --find
 #------------------------------------------------------------------------------
 # M2Crypto
 #------------------------------------------------------------------------------
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strM2Crypto . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strM2Crypto . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strM2Crypto"
 $p = Start-Process "$strScriptsDir\easy_install" -ArgumentList "-Z $file" -Wait -NoNewWindow -PassThru
 
 #------------------------------------------------------------------------------
 # PyCrypto
 #------------------------------------------------------------------------------
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strPyCrypto . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strPyCrypto . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strPyCrypto"
 $p = Start-Process "$strScriptsDir\easy_install" -ArgumentList "-Z $file" -Wait -NoNewWindow -PassThru
 
 #------------------------------------------------------------------------------
 # PyWin32
 #------------------------------------------------------------------------------
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strPyWin . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strPyWin . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strPyWin"
 $p = Start-Process "$strScriptsDir\easy_install" -ArgumentList "-Z $file" -Wait -NoNewWindow -PassThru
 
@@ -354,85 +343,85 @@ $p = Start-Process "$strScriptsDir\easy_install" -ArgumentList "-Z $file" -Wait 
 # Install additional prerequisites using PIP
 #==============================================================================
 
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strMarkupSafe . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strMarkupSafe . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strMarkupSafe"
 $p = Start-Process "$strScriptsDir\pip" -ArgumentList "install $file" -Wait -NoNewWindow -PassThru
 
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strJinja . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strJinja . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strJinja"
 $p = Start-Process "$strScriptsDir\pip" -ArgumentList "install $file" -Wait -NoNewWindow -PassThru
 
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strMsgPack . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strMsgPack . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strMsgPack"
 $p = Start-Process "$strScriptsDir\pip" -ArgumentList "install $file" -Wait -NoNewWindow -PassThru
 
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strPSUtil . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strPSUtil . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strPSUtil"
 $p = Start-Process "$strScriptsDir\pip" -ArgumentList "install $file" -Wait -NoNewWindow -PassThru
 
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strPyYAML . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strPyYAML . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strPyYAML"
 $p = Start-Process "$strScriptsDir\pip" -ArgumentList "install $file" -Wait -NoNewWindow -PassThru
 
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strPyZMQ . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strPyZMQ . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strPyZMQ"
 $p = Start-Process "$strScriptsDir\pip" -ArgumentList "install $file" -Wait -NoNewWindow -PassThru
 
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strWMI . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strWMI . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strWMI"
 $p = Start-Process "$strScriptsDir\pip" -ArgumentList "install $file" -Wait -NoNewWindow -PassThru
 
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strRequests . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strRequests . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strRequests"
 $p = Start-Process "$strScriptsDir\pip" -ArgumentList "install $file" -Wait -NoNewWindow -PassThru
 
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strCertifi . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strCertifi . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strCertifi"
 $p = Start-Process "$strScriptsDir\pip" -ArgumentList "install $file" -Wait -NoNewWindow -PassThru
 
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Installing $strGnuGPG . . ."
-#Write-Output " ----------------------------------------------------------------"
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Installing $strGnuGPG . . ."
+Write-Output " ----------------------------------------------------------------"
 $file = "$strDownloadDir\$strGnuGPG"
 $p = Start-Process "$strScriptsDir\pip" -ArgumentList "install $file" -Wait -NoNewWindow -PassThru
 
 #------------------------------------------------------------------------------
 # Script complete
 #------------------------------------------------------------------------------
-#Write-Output "================================================================="
-#Write-Output "Salt Stack Dev Environment Script Complete"
-#Write-Output "================================================================="
-#Write-Output ""
+Write-Output "================================================================="
+Write-Output "Salt Stack Dev Environment Script Complete"
+Write-Output "================================================================="
+Write-Output ""
 
-#If ( -Not $Silent ) {
-#    Write-Output "Press any key to continue ..."
-#    $p = $HOST.UI.RawUI.Flushinputbuffer()
-#    $p = $HOST.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-#}
+If ( -Not $Silent ) {
+    Write-Output "Press any key to continue ..."
+    $p = $HOST.UI.RawUI.Flushinputbuffer()
+    $p = $HOST.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
 
 #------------------------------------------------------------------------------
 # Remove the temperary download directory
 #------------------------------------------------------------------------------
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output " - Cleaning up downloaded files"
-#Write-Output " ----------------------------------------------------------------"
-#Write-Output ""
+Write-Output " ----------------------------------------------------------------"
+Write-Output " - Cleaning up downloaded files"
+Write-Output " ----------------------------------------------------------------"
+Write-Output ""
 Remove-Item $strDownloadDir -Force -Recurse
