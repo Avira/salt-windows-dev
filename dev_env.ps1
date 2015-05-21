@@ -50,7 +50,7 @@ $strSaltDir         = "C:\salt"
 $strWindowsRepo     = "http://docs.saltstack.com/downloads/windows-deps"
 # Salt32.zip and Salt64.zip reside in the same directory as this script
 # This would be for an offline installation
-#$strWindowsRepo     = $strWindowsRepo = Convert-Path .
+$strWindowsRepo     = Convert-Path c:/vagrant/deps/.
 $strPythonDir       = "C:\Python27"
 $strScriptsDir      = "$strPythonDir\Scripts"
 
