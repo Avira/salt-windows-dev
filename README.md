@@ -25,9 +25,9 @@ Additionally you have to
 
 1. You have to tell vagrant a bit about your environment.
 
-    export SALT_VAGRANT_BOX="<name of your vagrant windows box>"
+    export SALT_VAGRANT_BOX="name of your vagrant windows box"
     
-    export SALT_VAGRANT_SOURCES_PATH="<path to your local salt checkout>"
+    export SALT_VAGRANT_SOURCES_PATH="path to your local salt checkout"
     
 2. Change into your clone or download of this repository and type ``vagrant up``.
 
