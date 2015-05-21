@@ -1,4 +1,4 @@
-# salt-windows-dev 
+# salt-windows-dev-vagrant
 
 **Proof of concept for a vagrant enabled windows devbox.**
 
