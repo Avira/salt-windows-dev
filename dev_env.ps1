@@ -284,11 +284,12 @@ If ( Test-Path $strNSISDir\NSIS.exe ) {
 
 }
 
-# keep
-# lines
-# synced
-#
-#
+#------------------------------------------------------------------------------
+# Install Visual C++ Runtime
+#------------------------------------------------------------------------------
+Write-Output " - Installing $file . . ."
+$file = "$strDownloadDir\$strVcredist"
+$p = Start-Process $file -ArgumentList "/q" -Wait -NoNewWindow -PassThru
 
 #------------------------------------------------------------------------------
 # Install Python
