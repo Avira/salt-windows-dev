@@ -1,8 +1,9 @@
 # Fetch values from environment or use defaults
 confMap = {
+    # the vagrant box that should be used
     "SALT_VAGRANT_BOX" => nil,  # no public box yet ...
+    # path to your salt checkout on the host
     "SALT_VAGRANT_SOURCES_PATH" => "~/work/salt/salt",
-    "SALT_VAGRANT_USE_GUI" => false
 }
 puts "settings (can be changed in environemnt)"
 confMap.each do |key, value|
@@ -34,7 +35,6 @@ Vagrant.configure('2') do |config|
         c.vm.synced_folder confMap["SALT_VAGRANT_SOURCES_PATH"],
             "c:/salt-dev", :mount_options => ["ro"]
         c.vm.provider :virtualbox do |vb|
-            vb.gui = confMap["SALT_VAGRANT_USE_GUI"]
             vb.name = c.vm.hostname
         end
         c.vm.provision "shell", path: "dev_env.ps1"
