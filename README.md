@@ -2,7 +2,7 @@
 
 **Proof of concept for a vagrant enabled windows devbox.**
 
-This is a vagrant setup to bootstrap a windows development and testing environment with minimal effort. This can be used by developers and by test automation system.
+This is a vagrant setup to bootstrap a windows development and testing environment with minimal effort. This can be used by developers and by test automation systems.
 
 ## Pererquisites
 
@@ -17,7 +17,7 @@ For now you have to package a VirtualBox image yourself like described in [this 
 
 Additionally you have to
 
-* switch of [password complexity](http://stackoverflow.com/questions/23260656/modify-local-security-policy-using-powershell) 
+* switch off [password complexity](http://stackoverflow.com/questions/23260656/modify-local-security-policy-using-powershell) 
 * create a user 'vagrant' with password 'vagrant' that is member in 'Administrators' group
 
 
