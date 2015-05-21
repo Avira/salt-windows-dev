@@ -37,6 +37,6 @@ Vagrant.configure('2') do |config|
         c.vm.provider :virtualbox do |vb|
             vb.name = c.vm.hostname
         end
-        c.vm.provision "shell", path: "dev_env.ps1"
+        c.vm.provision "shell", path: "vagrant_dev_env.ps1"
     end
 end
