@@ -33,8 +33,8 @@ This box will provided in the vagrant cloud as soon as somebody gets around to r
 
 * Open a remote desktop connection With ``vagrant rdp`` or any rdp client to SALT_VAGRANT_BOX_IP and vagrant/vagrant credential.
 * open PowerShell and run ``c:/vagrant/vagrant_dev_env.ps1``
-* be aware of #6 
-* set paths (see #1)
-* install salt (see #2)
+* be aware of [#6](https://github.com/obestwalter/salt-windows-dev/issues/6 )
+* set paths (see [#1](https://github.com/obestwalter/salt-windows-dev/issues/1))
+* install salt (see [#2](https://github.com/obestwalter/salt-windows-dev/issues/2))
 
 if ``salt-call --version`` does not bork you have a winner :)
