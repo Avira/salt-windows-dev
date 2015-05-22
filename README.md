@@ -27,10 +27,11 @@ This box will provided in the vagrant cloud as soon as somebody gets around to r
 ## Testing
 
 * spin up box
-    $ cd [your clone of this repo]
-    $ SALT_VAGRANT_BOX="[name of vagrant box]" vagrant up --no-provision
 
-* With ``vagrant rdp`` you can open a remote desktop connection (you can also use a normal rdesktop client to connect to the SALT_VAGRANT_BOX_IP and the vagrant/vagrant credential).
+    * $ cd [your clone of this repo]
+    * $ SALT_VAGRANT_BOX="[name of vagrant box]" vagrant up --no-provision
+
+* Open a remote desktop connection With ``vagrant rdp`` or any rdp client to SALT_VAGRANT_BOX_IP and vagrant/vagrant credential.
 * open PowerShell and run ``c:/vagrant/vagrant_dev_env.ps1``
 * be aware of #6 
 * set paths (see #1)
