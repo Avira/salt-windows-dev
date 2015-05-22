@@ -1,6 +1,6 @@
 # salt-windows-dev-vagrant
 
-**Proof of concept for a vagrant enabled windows devbox.**
+**Proof of concept for a self installing, vagrant enabled Salt test and development environment.**
 
 This is a vagrant setup to bootstrap a windows development and testing environment with minimal effort. This can be used by developers and by test automation systems.
 
