@@ -31,10 +31,9 @@ It's not fully working and fully automated yet, so bare with me ...
 * spin up box
 
     * $ cd [your clone of this repo]
-    * $ SALT_VAGRANT_BOX="[name of vagrant box]" vagrant up --no-provision
+    * $ SALT_VAGRANT_BOX="[name of vagrant box]" vagrant up
 
 * Open a remote desktop connection With ``vagrant rdp`` or any rdp client to SALT_VAGRANT_BOX_IP and vagrant/vagrant credential.
-* open PowerShell and run ``c:/vagrant/vagrant_dev_env.ps1``
 * be aware of [#6](https://github.com/obestwalter/salt-windows-dev/issues/6 )
 * set paths (see [#1](https://github.com/obestwalter/salt-windows-dev/issues/1))
 * install salt (see [#2](https://github.com/obestwalter/salt-windows-dev/issues/2))
