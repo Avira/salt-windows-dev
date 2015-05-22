@@ -24,5 +24,16 @@ This box will provided in the vagrant cloud as soon as somebody gets around to r
 
 3. Done
 
-With ``vagrant rdp`` you can open a remote desktop connection (you can also use a normal rdesktop client to connect to the IP that is configured in the ``Vagrantfile``).
+## Testing
 
+* spin up box
+    $ cd [your clone of this repo]
+    $ SALT_VAGRANT_BOX="[name of vagrant box]" vagrant up --no-provision
+
+* With ``vagrant rdp`` you can open a remote desktop connection (you can also use a normal rdesktop client to connect to the SALT_VAGRANT_BOX_IP and the vagrant/vagrant credential).
+* open PowerShell and run ``c:/vagrant/vagrant_dev_env.ps1``
+* be aware of #6 
+* set paths (see #1)
+* install salt (see #2)
+
+if ``salt-call --version`` does not bork you have a winner :)
