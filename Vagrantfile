@@ -4,6 +4,7 @@ confMap = {
     "SALT_VAGRANT_BOX" => nil,  # no public box yet ...
     # path to your salt checkout on the host
     "SALT_VAGRANT_SOURCES_PATH" => "~/work/salt/salt",
+    "SALT_VAGRANT_BOX_IP" => "10.10.60.12",
 }
 puts "settings (can be changed in environemnt)"
 confMap.each do |key, value|
@@ -30,7 +31,7 @@ Vagrant.configure('2') do |config|
         c.vm.communicator = "winrm"
         c.winrm.username = "vagrant"
         c.winrm.password = "vagrant"
-        c.vm.network :private_network, ip: '10.10.60.12'
+        c.vm.network :private_network, ip: confMap["SALT_VAGRANT_BOX_IP"]
         c.vm.network "forwarded_port", guest: 3389, host: 33389, id: "rdp", auto_correct: true
         c.vm.synced_folder confMap["SALT_VAGRANT_SOURCES_PATH"],
             "c:/salt-dev", :mount_options => ["ro"]
