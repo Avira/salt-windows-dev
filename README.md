@@ -10,7 +10,7 @@ Host environment with [VirtualBox](https://www.virtualbox.org/) and [Vagrant](ht
 
 ### Vagrant windows box
 
-This box will provided in the vagrant cloud as soon as somebody gets around to resolve #5. for now you can follow the steps described [here](#5).
+This box will provided in the vagrant cloud as soon as somebody gets around to resolve [this isse](https://github.com/obestwalter/salt-windows-dev/issues/5). for now you can follow the steps described [here](https://github.com/obestwalter/salt-windows-dev/issues/5).
 
 ## Usage
 
