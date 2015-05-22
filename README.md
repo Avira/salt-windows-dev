@@ -26,6 +26,8 @@ This box will provided in the vagrant cloud as soon as somebody gets around to r
 
 ## Testing
 
+It's not fully working and fully automated yet, so bare with me ...
+
 * spin up box
 
     * $ cd [your clone of this repo]
