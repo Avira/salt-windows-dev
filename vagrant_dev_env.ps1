@@ -134,7 +134,7 @@ Function DownloadFileWithProgress {
         [Parameter(Mandatory=$true)]
         [String] $url,
         [Parameter(Mandatory=$false)]
-        [String] $localFile = (Join-Path $pwd.Path $url.SubString($url.LastIndexOf('/'))) 
+        [String] $localFile = (Join-Path $pwd.Path $url.SubString($url.LastIndexOf('/')))
     )
 
     begin {
