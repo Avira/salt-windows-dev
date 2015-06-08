@@ -4,13 +4,13 @@
 
 This is a vagrant setup to bootstrap a windows development and testing environment with minimal effort. This can be used by developers and by test automation systems.
 
-## Pererquisites
+## Prerequisites
 
 Host environment with [VirtualBox](https://www.virtualbox.org/) and [Vagrant](https://docs.vagrantup.com) installed.
 
 ### Vagrant windows box
 
-This box will provided in the vagrant cloud as soon as somebody gets around to resolve [this isse](https://github.com/obestwalter/salt-windows-dev/issues/5). for now you can follow the steps described [here](https://github.com/obestwalter/salt-windows-dev/issues/5).
+This box will be provided in the vagrant cloud as soon as somebody gets around to resolve [this isse](https://github.com/obestwalter/salt-windows-dev/issues/5). for now you can follow the steps described [here](https://github.com/obestwalter/salt-windows-dev/issues/5).
 
 ## Usage
 
