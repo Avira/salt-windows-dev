@@ -35,5 +35,6 @@ It's not fully working and fully automated yet, so bare with me ...
 * be aware of [#6](https://github.com/obestwalter/salt-windows-dev/issues/6 )
 * set paths (see [#1](https://github.com/obestwalter/salt-windows-dev/issues/1))
 * install salt (see [#2](https://github.com/obestwalter/salt-windows-dev/issues/2))
+* problems? Call ``VAGRANT_LOG=debug vagrant up`` to see what's going on.
 
 if ``salt-call --version`` does not bork you have a winner :)
