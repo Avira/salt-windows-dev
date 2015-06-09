@@ -1,7 +1,7 @@
 # Fetch values from environment or use defaults
 confMap = {
     # the vagrant box that should be used
-    "SALT_VAGRANT_BOX" => nil,  # no public box yet ...
+    "SALT_VAGRANT_BOX" => "obestwalter/salt-windows-test-2k8_r2",
     # path to your salt checkout on the host
     "SALT_VAGRANT_SOURCES_PATH" => "~/work/salt/salt",
     "SALT_VAGRANT_BOX_IP" => "10.10.60.12",
