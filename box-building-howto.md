@@ -1,4 +1,4 @@
-# Manual creation procedure
+# Box Building Howto
 
 Inpired by: https://dennypc.wordpress.com/2014/06/09/creating-a-windows-box-with-vagrant-1-6/
 
