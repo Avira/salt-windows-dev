@@ -10,19 +10,17 @@ Host environment with [VirtualBox](https://www.virtualbox.org/) and [Vagrant](ht
 
 ### Vagrant windows box
 
-This box will be provided in the vagrant cloud as soon as somebody gets around to resolve [this isse](https://github.com/obestwalter/salt-windows-dev/issues/5). for now you can follow the steps described [here](https://github.com/obestwalter/salt-windows-dev/issues/5).
+The [public vagrant box](https://atlas.hashicorp.com/obestwalter/boxes/salt-windows-test-2k8_r2) that is preconfigured in the Vagrantfile will be working till 2015/12/6 when the windows evaluation period will run out. Until then the box building will hopefully be automated alread like described [in this issue](https://github.com/obestwalter/salt-windows-dev/issues/9).
 
 ## Usage
 
-1. You have to tell vagrant a bit about your environment.
+1. Tell vagrant where your local checkout of the salt sources are (deafult is ``~/work/salt/salt``): ``export SALT_VAGRANT_SOURCES_PATH="path to your local salt checkout"``.
 
-    ``export SALT_VAGRANT_BOX="name of your vagrant windows box"``
-    
-    ``export SALT_VAGRANT_SOURCES_PATH="path to your local salt checkout"``
-    
 2. Change into your clone or download of this repository and type ``vagrant up``.
 
 3. Done
+
+Note: There are more configuration options, that you can overwrite with you own environment setting if you need to. See ``confMap`` in Vagrantile for what you can do.
 
 ## Testing
 
