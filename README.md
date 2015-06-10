@@ -29,7 +29,9 @@ It's not fully working and fully automated yet, so bare with me ...
 * spin up box
 
     * $ cd [your clone of this repo]
-    * $ SALT_VAGRANT_BOX="[name of vagrant box]" vagrant up
+    * $ vagrant up
+
+**WARNING at the moment it times out, but still boots - likely something wrong with winrm**
 
 * Open a remote desktop connection With ``vagrant rdp`` or any rdp client to SALT_VAGRANT_BOX_IP and vagrant/vagrant credential.
 * be aware of [#6](https://github.com/obestwalter/salt-windows-dev/issues/6 )
