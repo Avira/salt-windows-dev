@@ -14,7 +14,7 @@ The [public vagrant box](https://atlas.hashicorp.com/obestwalter/boxes/salt-wind
 
 ## Usage
 
-1. Tell vagrant where your local checkout of the salt sources are (deafult is ``~/work/salt/salt``): ``export SALT_VAGRANT_SOURCES_PATH="path to your local salt checkout"``.
+1. Tell vagrant where your local checkout of the salt sources are (default is ``~/work/salt/salt``): ``export SALT_VAGRANT_SOURCES_PATH="path to your local salt checkout"``.
 
 2. Change into your clone or download of this repository and type ``vagrant up``.
 
