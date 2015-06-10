@@ -10,7 +10,7 @@ Linux Host environment with [VirtualBox](https://www.virtualbox.org/) and [Vagra
 
 ### Vagrant windows box
 
-The [public vagrant box](https://atlas.hashicorp.com/obestwalter/boxes/salt-windows-test-2k8_r2) that is preconfigured in the Vagrantfile will be working till 2015/12/6 when the windows evaluation period will run out. Until then the box building will hopefully be automated alread like described [in this issue](https://github.com/obestwalter/salt-windows-dev/issues/9).
+The [public vagrant box](https://atlas.hashicorp.com/obestwalter/boxes/salt-windows-test-2k8_r2) that is preconfigured in the Vagrantfile will be working till 2015/12/6 when the windows evaluation period will run out. Until then the box building will hopefully be automated like described [in this issue](https://github.com/obestwalter/salt-windows-dev/issues/9).
 
 ## Usage
 
