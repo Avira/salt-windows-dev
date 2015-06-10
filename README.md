@@ -6,7 +6,7 @@ This is a vagrant setup to bootstrap a windows development and testing environme
 
 ## Prerequisites
 
-Host environment with [VirtualBox](https://www.virtualbox.org/) and [Vagrant](https://docs.vagrantup.com) installed.
+Linux Host environment with [VirtualBox](https://www.virtualbox.org/) and [Vagrant](https://docs.vagrantup.com) installed.
 
 ### Vagrant windows box
 
