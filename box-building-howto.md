@@ -1,6 +1,6 @@
 # Box Building Howto
 
-This particular howt is for Windows Server 2008 R2 but should be easily adaptable to different versions of Windows (fingers crossed),
+This particular howto is for Windows Server 2008 R2 but should be easily adaptable to different versions of Windows (fingers crossed),
 
 Inpired by: https://dennypc.wordpress.com/2014/06/09/creating-a-windows-box-with-vagrant-1-6/
 
