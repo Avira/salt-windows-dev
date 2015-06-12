@@ -33,7 +33,7 @@ Vagrant.configure('2') do |config|
         c.vm.network :private_network, ip: confMap["SALT_VAGRANT_BOX_IP"]
         c.vm.network "forwarded_port", guest: 3389, host: 33389, id: "rdp", auto_correct: true
         c.vm.synced_folder confMap["SALT_VAGRANT_SOURCES_PATH"],
-            "c:/salt-dev", :mount_options => ["ro"]
+            "c:/Salt-Dev", :mount_options => ["ro"]
         c.vm.provider :virtualbox do |vb|
             vb.name = c.vm.hostname
         end
