@@ -69,7 +69,7 @@ Used Windows ISO: https://www.microsoft.com/en-us/download/details.aspx?id=11093
 # Vagrant packaging
 
     cd $VROOT
-    vagrant package --base w2k8_r2_base --output w2k8_r2_base.box
+    vagrant package --base w2k8_r2_base --output salt-windows-test-2k8_r2.box
 
 # Misc info
 
