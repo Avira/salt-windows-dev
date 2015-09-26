@@ -76,4 +76,4 @@ Used Windows ISO: https://www.microsoft.com/en-us/download/details.aspx?id=11093
 * No windows updates installed
 * resulting new user: vagrant / vagrant
 * use vagrant winrm plugin to run remote commands: https://github.com/criteo/vagrant-winrm
-* 180 days usage restriction started at: 2015/6/9
+* 180 days usage restriction (last manual build was done 2015/9/20)
